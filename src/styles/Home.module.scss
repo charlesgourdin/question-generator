@@ -1,0 +1,22 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.questionContainer {
+  height: 50vh;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.actionContainer {
+  margin-bottom: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
