@@ -6,6 +6,7 @@ import type { Question } from '@/models/question'
 import ActionButton from '@/components/ActionButton'
 import FlipCard from '@/components/FlipCard'
 import { animated, useSpring } from '@react-spring/web'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   const [questions, setQuestions] = useState<Question[]>([])
@@ -92,8 +93,7 @@ export default function Home() {
           }
         </animated.div>
 
-        <footer>
-        </footer>
+        <Footer/>  
       </main>
     </>
   )

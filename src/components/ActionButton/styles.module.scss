@@ -8,6 +8,7 @@
     font-weight: bold;
     cursor: pointer;
     transition-duration: 300ms;
+    color: $secondary-color;
     &:hover {
         filter: brightness(110%);
         transition-duration: 300ms;
