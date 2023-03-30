@@ -5,10 +5,19 @@ import type { Question } from '@/models/question'
 
 import ActionButton from '@/components/ActionButton'
 import FlipCard from '@/components/FlipCard'
+import { animated, useSpring } from '@react-spring/web'
 
 export default function Home() {
   const [questions, setQuestions] = useState<Question[]>([])
   const [currentQuestion, setCurrentQuestion] = useState<Question>()
+
+  const [spring, setSpring] = useSpring(() => ({
+    config: {
+      duration: 500
+    },
+    from: { opacity: '0' },
+    to: { opacity: '1' },
+  }))
 
   useEffect(() => {
     fetch('questions.json',{
@@ -20,9 +29,17 @@ export default function Home() {
     .then((res) => res.json())
     .then((resJson) => {
       setQuestions(resJson)
-      setCurrentQuestion(resJson[Math.floor(Math.random()*resJson.length)])
+      setTimeout(() => initializedQuestion(resJson), 3000)
     })
   }, [])
+
+  const initializedQuestion = (resJson: Question[]) => {
+    setCurrentQuestion(resJson[Math.floor(Math.random()*resJson.length)])
+    setSpring.start({
+      from: { opacity: '0' },
+      to: { opacity: '1' },
+  })
+  }
 
   const getRandomQuestion = () => questions[Math.floor(Math.random()*questions.length)]
 
@@ -44,21 +61,32 @@ export default function Home() {
           </h1>
         </header>
 
-        <div className={styles.questionContainer}>
-          <FlipCard>
-              <p className='text'>{currentQuestion ? currentQuestion.question : null}</p>
-          </FlipCard>
-        </div>
-
-        <div className={styles.actionContainer}>
-          <ActionButton
-            onClick={() => setCurrentQuestion(getRandomQuestion())}
-          >
-            Pose moi une question
-          </ActionButton>
-        </div>
-
-
+        <animated.div
+          className={styles.globalContainer}
+          style={{
+              ...spring,
+          }}
+        >
+          {
+            currentQuestion
+            ?  <>
+                <div className={styles.questionContainer}>
+                  <FlipCard>
+                    <p className='text'>{currentQuestion ? currentQuestion.question : null}</p>
+                  </FlipCard>
+                </div>
+        
+                <div className={styles.actionContainer}>
+                  <ActionButton
+                    onClick={() => setCurrentQuestion(getRandomQuestion())}
+                  >
+                    Pose moi une autre question
+                  </ActionButton>
+                </div>
+              </>
+            : <h2 className='text'>Bonjour et bienvenu sur la question du jour!</h2>
+          }
+        </animated.div>
 
         <footer>
         </footer>

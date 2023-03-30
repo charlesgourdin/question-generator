@@ -6,6 +6,15 @@
   gap: 32px;
 }
 
+.globalContainer {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
 .questionContainer {
   height: 50vh;
   padding: 16px;
