@@ -84,7 +84,7 @@ export default function Home() {
                   </ActionButton>
                 </div>
               </>
-            : <h2 className='text'>Bonjour et bienvenu sur la question du jour!</h2>
+            : <h2 className='text'>Bonjour et bienvenue sur la question du jour!</h2>
           }
         </animated.div>
 
