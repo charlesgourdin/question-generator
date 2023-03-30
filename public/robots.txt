@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://laquestiondujour.fr
+
+# Sitemaps
+Sitemap: https://laquestiondujour.fr/sitemap.xml

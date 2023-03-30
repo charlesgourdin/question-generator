@@ -50,6 +50,10 @@ export default function Home() {
         <meta name="description" content="Répondez à une nouvelle question chaque jour sur La question du jour" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="keywords" content="question, quotidienne, réponse, curiosité, générateur"></meta>
+        <meta property="og:title" content="La question du jour" />
+        <meta property="og:description" content="Répondez à une nouvelle question chaque jour sur La question du jour" />
+        <meta property="og:url" content="https://www.laquestiondujour.fr/" />
+        <meta property="og:type" content="website" />
         <link rel="canonical" href="https://www.laquestiondujour.fr/"></link>
         <link rel="icon" href="/favicon.ico" />
       </Head>
