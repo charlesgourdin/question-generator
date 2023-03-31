@@ -1,0 +1,54 @@
+@import '../../styles/variables.scss';
+
+.navbar {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $secondary-color;
+    h1 {
+        margin-left: 16px;
+        color: white;    
+    }
+}
+
+@media (max-width: 320px) {
+    .navbar {
+        h1 {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (min-width: 320px) {
+    .navbar {
+        h1 {
+            font-size: 16px;
+        }
+    }
+}
+
+@media (min-width: 480px) {
+    .navbar {
+        h1 {
+            font-size: 24px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar {
+        justify-content: flex-start;
+        h1 {
+            font-size: 24px;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .navbar {
+        h1 {
+            font-size: 32px;
+        }
+    }
+}
