@@ -1,15 +1,16 @@
-import styles from "@/styles/Home.module.scss";
+import { onValue, ref } from "firebase/database";
 import { useEffect, useState } from "react";
-import type { Question } from "@/models/question";
-
+import { animated, useSpring } from "@react-spring/web";
 import ActionButton from "@/components/ActionButton";
 import FlipCard from "@/components/FlipCard";
-import { animated, useSpring } from "@react-spring/web";
 import Layout from "@/components/Layout";
+import db from "@/lib/firebase";
+import styles from "@/styles/Home.module.scss";
+import { Question } from "@/models/question";
 
 export default function Home() {
-  const [questions, setQuestions] = useState<Question[]>([]);
-  const [currentQuestion, setCurrentQuestion] = useState<Question>();
+  const [questionsLength, setQuestionsLength] = useState<number>(0);
+  const [currentQuestion, setCurrentQuestion] = useState<string>("");
 
   const [spring, setSpring] = useSpring(() => ({
     config: {
@@ -20,29 +21,29 @@ export default function Home() {
   }));
 
   useEffect(() => {
-    fetch("questions.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((resJson) => {
-        setQuestions(resJson);
-        setTimeout(() => initializedQuestion(resJson), 3000);
+    const questionRef = ref(db, "question");
+    onValue(questionRef, (t: { val: () => Question[] }) => {
+      const questions = t.val().map(({ value }) => value);
+      setQuestionsLength(questions.length);
+
+      const randomIndex = Math.floor(Math.random() * questionsLength);
+
+      setCurrentQuestion(questions[randomIndex]);
+      setSpring.start({
+        from: { opacity: "0" },
+        to: { opacity: "1" },
       });
+    });
   }, []);
 
-  const initializedQuestion = (resJson: Question[]) => {
-    setCurrentQuestion(resJson[Math.floor(Math.random() * resJson.length)]);
-    setSpring.start({
-      from: { opacity: "0" },
-      to: { opacity: "1" },
+  const getRandomQuestion = () => {
+    const randomIndex = Math.floor(Math.random() * questionsLength);
+    const questionRef = ref(db, `question/${randomIndex}`);
+    onValue(questionRef, (t) => {
+      const question = t.val().value;
+      setCurrentQuestion(question);
     });
   };
-
-  const getRandomQuestion = () =>
-    questions[Math.floor(Math.random() * questions.length)];
 
   return (
     <>
@@ -57,16 +58,12 @@ export default function Home() {
             <>
               <div className={styles.questionContainer}>
                 <FlipCard>
-                  <p className="text">
-                    {currentQuestion ? currentQuestion.question : null}
-                  </p>
+                  <p className="text">{currentQuestion}</p>
                 </FlipCard>
               </div>
 
               <div className={styles.actionContainer}>
-                <ActionButton
-                  onClick={() => setCurrentQuestion(getRandomQuestion())}
-                >
+                <ActionButton onClick={() => getRandomQuestion()}>
                   Pose moi une autre question
                 </ActionButton>
               </div>

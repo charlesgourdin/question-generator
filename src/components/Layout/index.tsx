@@ -1,5 +1,5 @@
 import Head from "next/head";
-import styles from "styles.module.scss";
+import styles from "./styles.module.scss";
 import { PropsWithChildren } from "react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
