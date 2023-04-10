@@ -25,8 +25,10 @@ export default function Nabvar() {
           <h1 className="title">La question du jour</h1>
         </Link>
 
-        <div className={styles.btnMenu}>
-          <i className="bi bi-list" onClick={() => setHideMenu(!hideMenu)}></i>
+        <div className={styles.btnMenu} onClick={() => setHideMenu(!hideMenu)}>
+          <div className={styles.stripe} />
+          <div className={styles.stripe} />
+          <div className={styles.stripe} />
         </div>
 
         <div
