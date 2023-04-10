@@ -69,9 +69,9 @@ export default function Home() {
               </div>
             </>
           ) : (
-            <h2 className="text">
+            <h1 className="title">
               Bonjour et bienvenue sur la question du jour!
-            </h2>
+            </h1>
           )}
         </animated.div>
       </Layout>
