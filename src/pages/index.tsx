@@ -28,7 +28,8 @@ export default function Home() {
 
       const randomIndex = Math.floor(Math.random() * questionsLength);
 
-      setCurrentQuestion(questions[randomIndex]);
+      setTimeout(() => setCurrentQuestion(questions[randomIndex]), 3000);
+
       setSpring.start({
         from: { opacity: "0" },
         to: { opacity: "1" },
@@ -70,7 +71,8 @@ export default function Home() {
             </>
           ) : (
             <h1 className="title">
-              Bonjour et bienvenue sur la question du jour!
+              Bonjour et bienvenue sur la question du jour! <br />
+              Un générateur de question aléatoire!
             </h1>
           )}
         </animated.div>

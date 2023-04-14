@@ -18,7 +18,7 @@ export default function Layout({ children }: PropsWithChildren<LayoutProps>) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
-          content="question, quotidienne, réponse, curiosité, générateur"
+          content="question, quotidienne, réponse, curiosité, générateur, generator, random, aléatoire"
         ></meta>
         <meta property="og:title" content="La question du jour" />
         <meta
