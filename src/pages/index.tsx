@@ -26,10 +26,6 @@ export default function Home() {
       const questions = t.val().map(({ value }) => value);
       setQuestionsLength(questions.length);
 
-      const randomIndex = Math.floor(Math.random() * questionsLength);
-
-      setTimeout(() => setCurrentQuestion(questions[randomIndex]), 3000);
-
       setSpring.start({
         from: { opacity: "0" },
         to: { opacity: "1" },
@@ -62,12 +58,6 @@ export default function Home() {
                   <p className="text">{currentQuestion}</p>
                 </FlipCard>
               </div>
-
-              <div className={styles.actionContainer}>
-                <ActionButton onClick={() => getRandomQuestion()}>
-                  Pose moi une autre question
-                </ActionButton>
-              </div>
             </>
           ) : (
             <h1 className="title">
@@ -75,6 +65,13 @@ export default function Home() {
               Un générateur de question aléatoire!
             </h1>
           )}
+          <div className={styles.actionContainer}>
+            <ActionButton onClick={() => getRandomQuestion()}>
+              {currentQuestion
+                ? "Pose moi une autre question"
+                : "Pose moi une question"}
+            </ActionButton>
+          </div>
         </animated.div>
       </Layout>
     </>
