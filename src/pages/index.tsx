@@ -48,7 +48,7 @@ export default function Home() {
 
   return (
     <>
-      <Layout>
+      <Layout title="La question du jour">
         <animated.div
           className={styles.globalContainer}
           style={{

@@ -4,16 +4,21 @@ import { PropsWithChildren } from "react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 
-export interface LayoutProps {}
+export interface LayoutProps {
+  title: string;
+}
 
-export default function Layout({ children }: PropsWithChildren<LayoutProps>) {
+export default function Layout({
+  title,
+  children,
+}: PropsWithChildren<LayoutProps>) {
   return (
     <>
       <Head>
-        <title>La question du jour</title>
+        <title>{title}</title>
         <meta
           name="description"
-          content="Répondez à une nouvelle question chaque jour sur La question du jour"
+          content="Répondez à une nouvelle question chaque jour sur La question du jour, un générateur de question aléatoire pour alimenter vos discussions!"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta

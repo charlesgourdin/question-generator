@@ -4,7 +4,7 @@ import styles from "@/styles/About.module.scss";
 export default function About() {
   return (
     <>
-      <Layout>
+      <Layout title="Qu'est-ce que la question du jour">
         <div className={styles.globalContainer}>
           <h1 className="title">Bienvenue sur "La Question du Jour" !</h1>
           <p className="text">
