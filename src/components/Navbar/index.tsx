@@ -7,6 +7,7 @@ import NavItem from "./NavItem";
 const MENU_LIST = [
   { text: "Accueil", href: "/" },
   { text: "A propos", href: "/about" },
+  { text: "Contact", href: "/contact" },
 ];
 
 export default function Nabvar() {

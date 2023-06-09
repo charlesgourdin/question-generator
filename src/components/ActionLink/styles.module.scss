@@ -1,0 +1,40 @@
+@import "../../styles/variables.scss";
+
+.actionLink {
+  border: none;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background-color: $third-color;
+  font-weight: bold;
+  cursor: pointer;
+  transition-duration: 300ms;
+  color: $secondary-color;
+  &:hover {
+    filter: brightness(110%);
+    transition-duration: 300ms;
+  }
+}
+
+@media (min-width: 320px) {
+  .actionLink {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 480px) {
+  .actionLink {
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .actionLink {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .actionLink {
+    font-size: 16px;
+  }
+}

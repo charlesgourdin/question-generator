@@ -1,0 +1,75 @@
+.globalContainer {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.formContainer {
+  margin-top: 32px;
+  width: 100%;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    fieldSet {
+      border: none;
+      label {
+        font-size: 0.75rem;
+
+        input,
+        textarea {
+          width: 100%;
+          padding: 4px 8px;
+          margin: 8px 0;
+          border: 1px rgb(255, 255, 255) solid;
+          border-radius: 4px;
+          font-family: "Roboto", sans-serif;
+
+          &:focus {
+            outline: none;
+            border: 1px rgb(95, 95, 95) solid;
+          }
+        }
+
+        textarea {
+          height: 80px;
+        }
+      }
+    }
+
+    .error {
+      font-family: "Roboto", sans-serif;
+      font-size: 0.75rem;
+    }
+
+    button {
+      margin: 8px 0;
+      max-width: 200px;
+      padding: 8px;
+      border-radius: 4px;
+      border: none;
+      color: white;
+      background-color: black;
+      align-self: flex-end;
+      cursor: pointer;
+      &:hover {
+        background-color: rgb(30, 30, 30);
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .globalContainer {
+    padding: 120px;
+  }
+
+  .formContainer {
+    max-width: 600px;
+  }
+}
